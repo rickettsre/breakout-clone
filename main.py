@@ -13,12 +13,12 @@ import time
 screen = Screen()
 
 screen.bgcolor("black")
-screen.setup(800, 600) 
+screen.setup(800, 600)
 screen.setup()
 screen.title("Breakout")
 screen.tracer(0)  # screen tracer
 
-scoreboard = Scoreboard(y_position=0)
+scoreboard = Scoreboard()
 paddle = Paddle()
 court = Court()
 ball = Ball()
@@ -63,6 +63,6 @@ while game_is_on:
             scoreboard.increase_score(obj.point)
             brick.remove_brick(obj)
             ball.bounce_y()
-            
+
 
 screen.exitonclick()

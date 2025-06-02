@@ -4,17 +4,22 @@ STYLE = ("Impact", 30, "bold")
 
 
 class Scoreboard(Turtle):
-    def __init__(self, y_position=0):
+    def __init__(self):
         super().__init__()
         self.score = 0
+        self.level = 1
         self.color("#cccccc")
         self.penup()
         self.hideturtle()
-        self.goto(y_position, 350)
+        self.goto(550, 180)
         self.update_scoreboard()
 
     def update_scoreboard(self):
-        self.write(f"Score : {self.score}", font=STYLE, align="center")
+        self.write(
+            f"Score : {self.score}\n Level: {self.level}",
+            font=STYLE,
+            align="center",
+        )
 
     def increase_score(self, point):
         self.score += point
