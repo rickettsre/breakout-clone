@@ -22,3 +22,4 @@ class Bricks(Turtle):
 
     def remove_brick(self, obj):
         obj.goto(-1000, -1000)
+        self.bricks.remove(obj)  # remove from list

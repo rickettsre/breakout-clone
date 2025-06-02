@@ -13,7 +13,7 @@ import time
 screen = Screen()
 
 screen.bgcolor("black")
-screen.setup(800, 600)
+screen.setup(width=1.0, height=1.0)  # fullscreen window size
 screen.setup()
 screen.title("Breakout")
 screen.tracer(0)  # screen tracer
@@ -55,6 +55,7 @@ while game_is_on:
         ball.bounce_y()
     # Detect Ball out of bounds:
     if ball.ycor() <= -280:
+        scoreboard.lose_life(1)
         ball.ball_reset()
     # Brick collision
     for obj in brick.bricks:
@@ -63,6 +64,18 @@ while game_is_on:
             scoreboard.increase_score(obj.point)
             brick.remove_brick(obj)
             ball.bounce_y()
+
+    if len(brick.bricks) == 0:
+        scoreboard.clear()
+        scoreboard.goto(0, 0)
+        scoreboard.write("You Win!", align="center", font=("IMPACT", 50, "bold"))
+        game_is_on = False
+
+    if scoreboard.lives <= 0:
+        scoreboard.clear()
+        scoreboard.goto(0, 0)
+        scoreboard.write("Game Over!", align="center", font=("IMPACT", 50, "bold"))
+        game_is_on = False
 
 
 screen.exitonclick()
