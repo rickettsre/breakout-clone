@@ -27,6 +27,11 @@ class Scoreboard(Turtle):
         self.clear()
         self.update_scoreboard()
 
+    def increase_level(self, level):
+        self.level += level
+        self.clear()
+        self.update_scoreboard()
+
     def lose_life(self, life):
         self.lives -= life
         self.clear()

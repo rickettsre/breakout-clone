@@ -21,5 +21,10 @@ class Bricks(Turtle):
             x_position += 50
 
     def remove_brick(self, obj):
-        obj.goto(-1000, -1000)
+        obj.hideturtle()  # hide the brick
         self.bricks.remove(obj)  # remove from list
+
+    def reset_bricks(self):
+        for brick in self.bricks:
+            brick.hideturtle()
+        self.bricks.clear()  # clear the list of bricks

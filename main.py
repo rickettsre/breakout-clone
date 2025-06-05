@@ -24,14 +24,20 @@ court = Court()
 ball = Ball()
 
 brick = Bricks()
-brick.create_bricks("yellow", -300, 125, 1)
-brick.create_bricks("yellow", -200, 150, 1)
-brick.create_bricks("green", -100, 175, 3)
-brick.create_bricks("green", 0, 200, 3)
-brick.create_bricks("orange", 100, 225, 5)
-brick.create_bricks("orange", 200, 250, 5)
-brick.create_bricks("red", 300, 275, 7)
-brick.create_bricks("red", 400, 300, 7)
+
+
+def create_bricks():
+    brick.create_bricks("yellow", -300, 125, 1)
+    brick.create_bricks("yellow", -200, 150, 1)
+    brick.create_bricks("green", -100, 175, 3)
+    brick.create_bricks("green", 0, 200, 3)
+    brick.create_bricks("orange", 100, 225, 5)
+    brick.create_bricks("orange", 200, 250, 5)
+    brick.create_bricks("red", 300, 275, 7)
+    brick.create_bricks("red", 400, 300, 7)
+
+
+create_bricks()
 
 screen.listen()
 
@@ -66,10 +72,9 @@ while game_is_on:
             ball.bounce_y()
 
     if len(brick.bricks) == 0:
-        scoreboard.clear()
-        scoreboard.goto(0, 0)
-        scoreboard.write("You Win!", align="center", font=("IMPACT", 50, "bold"))
-        game_is_on = False
+        scoreboard.increase_level(1)
+        ball.ball_reset()
+        create_bricks()
 
     if scoreboard.lives <= 0:
         scoreboard.clear()
